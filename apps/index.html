@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apps Menu Munetios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2b2b2b;
+            margin: 0;
+            padding: 20px;
+            color: #fff;
+        }
+        .app-wrapper {
+            max-width: 400px;
+            margin: auto;
+            background-color: #270e33ff;
+            border-radius: 13px;
+            padding: 20px;
+        }
+        .apps-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .app-item {
+            background: transparent;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        .app-item a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-top: 10px;
+        }
+        .app-item a:hover {
+            text-decoration: underline;
+        }
+        .app-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .icon img {
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-wrapper">
+        <ul class="apps-list">
+            <li class="app-item">
+                <div class="icon">
+                    <img src="https://www.munetios.com/favicon.ico" alt="Munetios Icon" width="52" height="48">
+                </div>
+                <a href="https://www.munetios.com/">Munetios Search</a>
+            </li>
+            <li class="app-item">
+                <div class="icon">
+                    <img src="https://video.munetios.com/image.png" alt="YouVidPlay Icon" width="52" height="48">
+                </div>
+                <a href="https://video.munetios.com">YouVidPlay</a>
+            </li>
+            <li class="app-item">
+                <div class="icon">
+                    <img src="https://calendar.munetios.com/new/logo.png" alt="Munetios Calendar Icon" width="52" height="48">
+                </div>
+                <a href="https://calendar.munetios.com/new">Munetios Calendar</a>
+            </li>
+            <li class="app-item">
+                <div class="icon">
+                    <img src="image1.png" alt="Munetios Docs Icon" width="52" height="65">
+                </div>
+                <a href="https://docs.munetios.com/">Munetios Docs</a>
+            </li>
+            <!-- Notes logo -->
+            <li class="app-item">
+                <div class="icon">
+                    <img src="image.png" alt="Munetios Notes Icon" width="52" height="65">
+                </div>
+                <a href="https://notes.munetios.com/">Munetios Notes</a>
+            </li>
+            <li class="app-item">
+                <div class="icon">
+                    <img src="image copy.png" alt="Munetios Tasks Icon" width="61" height="52">
+                </div>
+                <a href="https://tasks.munetios.com/">Munetios Tasks</a>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <div class="app-wrapper">
+        <ul class="apps-list">
+            <li class="app-item">
+                <div class="icon">
+                    <img src="image copy 2.png" alt="Munetios Calculator Icon" width="52" height="65">
+                </div>
+                <a href="https://calculator.munetios.com/">Munetios Calculator</a>
+            </li>
+            <li class="app-item">
+                <div class="icon">
+                    <img src="image copy 3.png" alt="Munetios Weather Icon" width="61" height="48">
+                </div>
+                <a href="https://weather.munetios.com/">Munetios Weather</a>
+            </li>
+        </ul>
+
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Assign unique data-appid to each app-item if not already set
+        document.querySelectorAll('.apps-list').forEach((list, idx) => {
+            Array.from(list.children).forEach((item, i) => {
+                if (!item.dataset.appid) {
+                    item.dataset.appid = `app${idx}_${i}`;
+                }
+            });
+        });
+
+        // Make app-items clickable
+        document.querySelectorAll('.app-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Prevent click if dragging
+                if (e.target.tagName === 'A') return;
+                const link = this.querySelector('a').href;
+                window.location.href = link;
+            });
+        });
+
+        // Drag and drop logic
+        let draggedItem = null;
+
+        document.querySelectorAll('.app-item').forEach(item => {
+            item.setAttribute('draggable', 'true');
+
+            item.addEventListener('dragstart', function(e) {
+                draggedItem = this;
+                setTimeout(() => this.style.opacity = '0.5', 0);
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', this.dataset.appid);
+            });
+
+            item.addEventListener('dragend', function(e) {
+                this.style.opacity = '';
+                draggedItem = null;
+            });
+
+            item.addEventListener('dragenter', function(e) {
+                e.preventDefault();
+                this.style.backgroundColor = 'rgba(255,255,255,0.2)';
+            });
+            item.addEventListener('dragleave', function(e) {
+                this.style.backgroundColor = '';
+            });
+        });
+
+        document.querySelectorAll('.apps-list').forEach(list => {
+            list.addEventListener('dragover', function(e) {
+                e.preventDefault();
+            });
+
+            list.addEventListener('drop', function(e) {
+                e.preventDefault();
+                const appid = e.dataTransfer.getData('text/plain');
+                const dragged = document.querySelector(`[data-appid="${appid}"]`);
+                if (!dragged) return;
+
+                // Find the closest .app-item under the cursor
+                let target = e.target;
+                while (target && !target.classList.contains('app-item')) {
+                    if (target === this) break;
+                    target = target.parentElement;
+                }
+                if (target && target.classList && target.classList.contains('app-item') && target !== dragged) {
+                    // Insert before or after depending on mouse position
+                    const rect = target.getBoundingClientRect();
+                    const offset = e.clientY - rect.top;
+                    if (offset > rect.height / 2) {
+                        this.insertBefore(dragged, target.nextSibling);
+                    } else {
+                        this.insertBefore(dragged, target);
+                    }
+                } else {
+                    this.appendChild(dragged);
+                }
+                saveAllAppOrders();
+            });
+        });
+
+        // Save the section and order of all app-items
+        function saveAllAppOrders() {
+            const lists = document.querySelectorAll('.apps-list');
+            let appState = {};
+            lists.forEach((list, idx) => {
+                Array.from(list.children).forEach((li, order) => {
+                    appState[li.dataset.appid] = { section: idx, order: order };
+                });
+            });
+            localStorage.setItem('appsMenuOrder', JSON.stringify(appState));
+        }
+
+        // Load the section and order of all app-items
+        function loadAllAppOrders() {
+            const appState = JSON.parse(localStorage.getItem('appsMenuOrder'));
+            if (!appState) return;
+            const lists = document.querySelectorAll('.apps-list');
+            // Collect all items by id
+            let allItems = {};
+            lists.forEach(list => {
+                Array.from(list.children).forEach(li => {
+                    allItems[li.dataset.appid] = li;
+                });
+            });
+            // Clear all lists
+            lists.forEach(list => list.innerHTML = '');
+            // Place items in correct section and order
+            Object.entries(appState)
+                .sort((a, b) => {
+                    if (a[1].section !== b[1].section) return a[1].section - b[1].section;
+                    return a[1].order - b[1].order;
+                })
+                .forEach(([appid, { section }]) => {
+                    const li = allItems[appid];
+                    if (li && lists[section]) {
+                        lists[section].appendChild(li);
+                    }
+                });
+        }
+
+        // Initial load
+        loadAllAppOrders();
+    });
+    </script>
+</body>
+</html>
