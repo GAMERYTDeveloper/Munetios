@@ -1,4 +1,513 @@
-    function createAddAppModal() {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apps Menu Munetios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        button {
+            font-family: Poppins, sans-serif;
+            background-color: #4b0082;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 19px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #6a0dad;
+        }
+        body {
+            font-family: Poppins, sans-serif;
+            background-color: #2b2b2b;
+            margin: 0;
+            padding: 20px;
+            color: #fff;
+        }
+        .app-wrapper {
+            max-width: 400px;
+            margin: auto;
+            background-color: #270e33ff;
+            border-radius: 13px;
+            padding: 20px;
+        }
+        .apps-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .coming-soon {
+            display: none;
+        }
+        .app-item {
+            background: transparent;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        .app-item a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-top: 10px;
+        }
+        .app-item a:hover {
+            text-decoration: underline;
+        }
+        .app-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .icon img {
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-wrapper">
+        <ul class="apps-list">
+            <li class="app-item coming-soon">
+                <!-- Do accounts-->
+                 <div class="icon">
+                    <img src="image copy 4.png" alt="Munetios Accounts Icon" width="48" height="56">
+                 </div>
+                <a href="#" class="app-link">Munetios Accounts</a>
+            </li>
+              <li class="app-item" data-link="https://www.munetios.com/">
+                <div class="icon">
+                    <img src="https://www.munetios.com/favicon.ico" alt="Munetios Icon" width="52" height="48">
+                </div>
+                <a href="https://www.munetios.com/" class="app-link">Munetios Search</a>
+            </li>
+            <li class="app-item coming-soon">
+                <!-- Do 97529 Office-->
+                <div class="icon">
+                    <img src="image copy 8.png" alt="Munetios Office Icon" width="48" height="56">
+                </div>
+                <a href="#" class="app-link">97529 Office</a>
+            </li> 
+            <li class="app-item coming-soon" data-link="https://video.munetios.com/">
+                <div class="icon">
+                    <img src="https://video.munetios.com/image.png" alt="YouVidPlay Icon" width="52" height="48">
+                </div>
+                <a href="https://video.munetios.com/" class="app-link">YouVidPlay</a>
+            </li>
+             <li class="app-item coming-soon">
+                <!-- DO Munetios AI -->
+                <div class="icon">
+                    <img src="image copy 6.png" alt="Munetios AI Icon" width="52" height="48">
+                </div>
+                <a href="#" class="app-link">Munetios AI</a>
+            </li> 
+               <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 5.png" alt="Munetios Mail Icon" width="52" height="48">
+                </div>
+                <a href="#" class="app-link">Munetios Mail</a>
+            </li> 
+           
+            <li class="app-item coming-soon">
+                <!-- Do Munetios Maps -->
+                <div class="icon">
+                    <img src="image copy 7.png" alt="Munetios Maps Icon" width="48" height="56">
+                </div>
+                <a href="#" class="app-link">Munetios Maps</a>
+            </li>  
+             <li class="app-item coming-soon">
+                <!-- Do Munetios Chat-->
+                <div class="icon">
+                    <img src="image copy 11.png" alt="Munetios Chat Icon" width="52" height="48">
+                </div>
+                <a href="#" class="app-link">Munetios Chat</a>
+            </li>
+            <li class="app-item coming-soon">
+                <!-- Do Munetios Meeting-->
+                <div class="icon">
+                    <img src="image copy 12.png" alt="Munetios Meeting Icon" width="56" height="48">
+                </div>
+                <a href="#" class="app-link">Munetios Meeting</a>
+            </li>  
+            <li class="app-item coming-soon">
+                <!-- Do Munetios Drive-->
+                <div class="icon">
+                    <img src="image copy 9.png" alt="Munetios Drive Icon" width="48" height="56">
+                </div>
+                <a href="#" class="app-link">Munetios Drive</a>
+            </li>
+            <li class="app-item" data-link="https://calendar.munetios.com/new">
+                <div class="icon">
+                    <img src="https://calendar.munetios.com/new/logo.png" alt="Munetios Calendar Icon" width="52" height="48">
+                </div>
+                <a href="https://calendar.munetios.com/new" class="app-link">Munetios Calendar</a>
+            </li>
+          <li class="app-item coming-soon">
+                <!-- DO Munetios Contacts-->
+                <div class="icon">
+                    <img src="image copy 10.png" alt="Munetios Contacts Icon" width="48" height="56">
+                </div>
+                <a href="#" class="app-link">Munetios Contacts</a>
+            </li>
+          
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 22.png" alt="Munetios News Icon" width="56" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios News</a>
+            </li>
+            <li class="app-item coming-soon">
+                <!-- DO Munetios Apps hub-->
+                <div class="icon">
+                    <img src="image copy 27.png" alt="Munetios Apps Hub Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Apps Hub</a>
+            </li> 
+            <!-- Do Munetios Photos -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 17.png" alt="Munetios Photos Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Photos</a>
+            </li>
+            <!-- Do Munetios Translator -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 26.png" alt="Munetios Translator Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Translator</a>
+            </li>  
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 23.png" alt="Munetios Stocks Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Stocks</a>
+            </li>
+             <!-- Do Munetios Tasks-->
+            <li class="app-item" data-link="https://tasks.munetios.com/">
+                <div class="icon">
+                    <img src="image copy.png" alt="Munetios Tasks Icon" width="61" height="52">
+                </div>
+                <a href="https://tasks.munetios.com/" class="app-link">Munetios Tasks</a>
+            </li>
+      
+        </ul>
+    </div>
+    <br>
+    <div class="app-wrapper">
+        <ul class="apps-list"> 
+             <li class="app-item" data-link="https://calculator.munetios.com/">
+                <div class="icon">
+                    <img src="image copy 2.png" alt="Munetios Calculator Icon" width="52" height="65">
+                </div>
+                <a href="https://calculator.munetios.com/" class="app-link">Munetios Calculator</a>
+            </li>
+             <li class="app-item" data-link="https://docs.munetios.com/">
+                <div class="icon">
+                    <img src="image1.png" alt="Munetios Docs Icon" width="52" height="65">
+                </div>
+                <a href="https://docs.munetios.com/" class="app-link">Munetios Docs</a>
+            </li>   
+             <!-- Do Munetios Worksheets, Forms, Pages -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 14.png" alt="Munetios Worksheets Icon" width="52" height="65">
+                </div>
+                <a href="#" class="app-link">Munetios Worksheets</a>
+            </li>
+            <li class="app-item coming-soon">
+                <!-- Do Munetios Present -->
+                <div class="icon">
+                    <img src="image copy 13.png" alt="Munetios Present Icon" width="52" height="65">
+                </div>
+                <a href="#" class="app-link">Munetios Present</a>
+            </li>
+            <!-- Do Munetios Books-->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 19.png" alt="Munetios Books Icon" width="52" height="65">
+                </div>
+                <a href="#" class="app-link">Munetios Books</a>
+            </li>
+            <!-- Do Munetios Wiki -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 20.png" alt="Munetios Wiki Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Wiki</a>
+            </li>
+          
+        
+              
+            <!-- Notes logo -->
+            <li class="app-item" data-link="https://notes.munetios.com/">
+                <div class="icon">
+                    <img src="image.png" alt="Munetios Notes Icon" width="52" height="65">
+                </div>
+                <a href="https://notes.munetios.com/" class="app-link">Munetios Notes</a>
+            </li>
+                <!-- Do Munetios Games Hub-->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 41.png" alt="Munetios Games Hub Icon" width="65" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Games Hub</a>
+            </li>  
+             <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 16.png" alt="Munetios Pages Icon" width="52" height="65">
+                </div>
+                <a href="#" class="app-link">Munetios Pages</a>
+            </li>
+               <!-- Do Munetios Arts-->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 29.png" alt="Munetios Arts Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Arts</a>
+            </li>
+            <!-- DO notebook-->
+            <li class="app-item" data-link="https://notebook.munetios.com/">
+                <div class="icon">
+                    <img src="https://notebook.munetios.com/favicon.ico" alt="Munetios Notebook Icon" width="52" height="65">
+                </div>
+                <a href="https://notebook.munetios.com/" class="app-link">Munetios Notebook</a>
+            </li>
+            <li class="app-item coming-soon">
+                <!-- Do Munetios Earth -->
+                <div class="icon">
+                    <img src="image copy 28.png" alt="Munetios Earth Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Earth</a>
+            </li>
+                <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 24.png" alt="Munetios Sports Icon" width="52" height="56">
+                </div>
+                <a href="#" class="app-link">Munetios Sports</a>
+            </li>
+             <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 25.png" alt="Munetios Movies/TV Icon" width="56" height="48">
+                </div>
+                <a href="#" class="app-link">Munetios Movies/TV</a>
+            </li> 
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 15.png" alt="Munetios Forms Icon" width="52" height="65">
+                </div>
+                <a href="#" class="app-link">Munetios Forms</a>
+            </li>
+             
+                <!-- Do Munetios Ads-->
+                <li class="app-item coming-soon">
+                    <div class="icon">
+                        <img src="image copy 21.png" alt="Munetios Ads Icon" width="52" height="65">
+                    </div>
+                    <a href="#" class="app-link">Munetios Ads</a>
+                </li> 
+             
+             <!-- Do Munetios Font-->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 40.png" alt="Munetios Font Maker Icon" width="52" height="68">
+                </div>
+                <a href="#" class="app-link">Munetios Font Maker</a>
+            </li>
+           <!-- Do whiteboard -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 18.png" alt="Munetios Whiteboard Icon" width="52" height="65">
+                </div>
+                <a href="#" class="app-link">Munetios Whiteboard</a>
+            </li>   
+             
+              
+       
+              <!-- Do Munetios Browser --> 
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 36.png" alt="Munetios Browser Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Browser</a>
+            </li> 
+               <!-- Do Munetios Health -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 39.png" alt="Munetios Health Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Health</a>
+            </li> 
+             <!-- Do Munetios OS -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 37.png" alt="Munetios OS Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios OS</a>
+            </li>
+                     <!-- Do Munetios Protection -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 31.png" alt="Munetios Protection Icon" width="52" height="58">
+                </div>
+                <a href="#" class="app-link">Munetios Protection</a>
+            </li>
+        
+            
+
+         
+          
+                 <!-- Do Munetios Kids -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 35.png" alt="Munetios Kids Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Kids</a>
+            </li>
+            
+
+             <!-- DO Munetios Shopping -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 34.png" alt="Munetios Shopping Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Shopping</a>
+            </li>
+           
+         
+        
+         
+           
+         
+         
+        
+           
+          
+            <!-- Do Munetios Password Manager -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 32.png" alt="Munetios Password Manager Icon" width="63" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Password Manager</a>
+            </li>
+             
+               <!-- Do Munetios Help Center -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 42.png" alt="Munetios Help Center Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Help Center</a>
+            </li>
+            <!-- Do Munetios Store -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 33.png" alt="Munetios Store Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Store</a>
+            </li>
+          <!-- Do Munetios Education--> 
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 30.png" alt="Munetios Education Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Education</a>
+            </li>
+      
+            <!-- Do Munetios Travel-->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 38.png" alt="Munetios Travel Icon" width="48" height="66">
+                </div>
+                <a href="#" class="app-link">Munetios Travel</a>
+            </li>
+            <!-- Do YouVidPlay Music -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 45.png" alt="YouVidPlay Music Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">YouVidPlay Music</a>
+            </li>  
+
+           
+        
+            
+            <!-- Do Munetios Wallet -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 44.png" alt="Munetios Wallet Icon" width="52" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios Wallet</a>
+            </li>     
+             <li class="app-item" data-link="https://weather.munetios.com/">
+                <div class="icon">
+                    <img src="image copy 3.png" alt="Munetios Weather Icon" width="61" height="48">
+                </div>
+                <a href="https://weather.munetios.com/" class="app-link">Munetios Weather</a>
+            </li>  
+            <!-- DO YouDriveCar -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 43.png" alt=" Munetios YouDriveCar Icon" width="66" height="52">
+                </div>
+                <a href="#" class="app-link">Munetios YouDriveCar</a>
+            </li>  
+           
+        </ul>
+    </div>
+    <br>
+    <div class="app-wrapper">
+        <ul class="apps-list"> 
+             
+        </ul>
+    </div>
+    <br>
+    <div class="app-wrapper">
+        <ul class="apps-list"></ul>
+    </div>
+    <br>
+    <div class="app-wrapper">
+        <ul class="apps-list"></ul>
+    </div>  
+    <footer>
+        <button class="btn" id="addApp">Add App</button>
+        <button class="btn" id="hiderandomapps">Hide Random Apps</button>
+        <button class="btn" id="shuffleBtn">Shuffle App orders</button>
+        <br><br>
+
+        <!-- its 2025 not 2024 -->
+        <p style="text-align: center; color: #888; font-size: 12px;">&copy; 2025 Munetios&trade; . All rights reserved.
+            <br>
+            <a href="https://www.munetios.com/policies/#/terms" style="color: #888; text-decoration: none;">Terms</a> |
+            <a href="https://www.munetios.com/policies/#/privacy" style="color: #888; text-decoration: none;">Privacy</a>
+        </p>
+    </footer>
+    <script>
+    // Open links in new tab using window.open
+    document.querySelectorAll('.app-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(this.href, '_blank', 'noopener');
+        });
+    });
+    // Make app-items clickable and open in new tab
+    document.querySelectorAll('.app-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') return;
+            const link = this.querySelector('a').href;
+            window.open(link, '_blank', 'noopener');
+        });
+    });
+    </script>
+    <script>
+        function createAddAppModal() {
             // Remove any existing modal
             document.querySelectorAll('.add-app-modal').forEach(m => m.remove());
 
@@ -355,3 +864,450 @@
             `;
             document.head.appendChild(style);
         })();
+
+    document.getElementById('hiderandomapps').addEventListener('click', function() {
+        // List of app names that should never be hidden (case-insensitive, trimmed)
+        const neverHide = [
+            'Munetios Accounts',
+            'Munetios Contacts',
+            'Munetios Calculator',
+            'Munetios Browser',
+            'Munetios OS',
+            'Munetios Travel',
+            'Munetios Password Manager',
+            'Munetios Help Center',
+            'Munetios Protection',
+            'Munetios YouDriveCar',
+            'Munetios Weather'
+        ].map(s => s.toLowerCase().trim());
+
+        // Get all visible app-items that are not in neverHide
+        const candidates = Array.from(document.querySelectorAll('.app-item'))
+            .filter(item => {
+                if (item.style.display === 'none') return false;
+                const a = item.querySelector('a');
+                if (!a) return false;
+                const name = a.textContent.toLowerCase().trim();
+                return !neverHide.includes(name);
+            });
+
+        if (candidates.length === 0) return;
+
+        // Pick a random candidate and hide it
+        const randomIdx = Math.floor(Math.random() * candidates.length);
+        const toHide = candidates[randomIdx];
+        hideApp(toHide);
+    });
+        // Shuffle apps across all lists, preserving how many items each list originally had
+        function shuffleArray(a) {
+            for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+            }
+        }
+
+        // Shuffle and redistribute items, then save order
+        function shuffleApps() {
+            const lists = Array.from(document.querySelectorAll('.apps-list'));
+            if (!lists.length) return;
+
+            // Record how many items each list currently has
+            const counts = lists.map(l => l.children.length);
+
+            // Collect all items
+            const items = [];
+            lists.forEach(l => Array.from(l.children).forEach(ch => items.push(ch)));
+
+            if (items.length <= 1) return;
+
+            // Ensure Accounts app stays on top
+            const accountsText = 'Munetios Accounts';
+            const accountsIndex = items.findIndex(li => {
+            const a = li.querySelector && li.querySelector('a');
+            return a && a.textContent && a.textContent.trim() === accountsText;
+            });
+            let accountsItem = null;
+            if (accountsIndex !== -1) {
+            accountsItem = items.splice(accountsIndex, 1)[0];
+            }
+
+            // Shuffle remaining items
+            shuffleArray(items);
+
+            // Clear lists
+            lists.forEach(l => l.innerHTML = '');
+
+            // Refill lists preserving original counts
+            let idx = 0;
+            for (let li = 0; li < lists.length; li++) {
+            for (let k = 0; k < counts[li] && idx <= items.length; k++) {
+                // If this is the very first slot of the very first list and we have accountsItem, place it first
+                if (li === 0 && k === 0 && accountsItem) {
+                lists[0].appendChild(accountsItem);
+                continue;
+                }
+                // Otherwise take next shuffled item
+                if (idx < items.length) {
+                lists[li].appendChild(items[idx++]);
+                }
+            }
+            }
+
+            // If any leftover items (shouldn't happen), append to last list
+            while (idx < items.length) {
+            lists[lists.length - 1].appendChild(items[idx++]);
+            }
+
+            // Persist new order
+            if (typeof saveAllAppOrders === 'function') saveAllAppOrders();
+        }
+
+        // Hook up the button (button exists in DOM near this script)
+        const shuffleBtn = document.getElementById('shuffleBtn');
+        if (shuffleBtn) shuffleBtn.addEventListener('click', shuffleApps);
+        function showContextMenu(options, x, y) {
+            // Remove any existing menu
+            document.querySelectorAll('.custom-context-menu').forEach(m => m.remove());
+            const menu = document.createElement('div');
+            menu.className = 'custom-context-menu';
+            menu.style.position = 'fixed';
+            menu.style.left = x + 'px';
+            menu.style.top = y + 'px';
+            menu.style.background = '#222';
+            menu.style.color = '#fff';
+            menu.style.borderRadius = '8px';
+            menu.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
+            menu.style.zIndex = 9999;
+            menu.style.minWidth = '160px';
+            menu.style.padding = '6px 0';
+            menu.style.fontSize = '15px';
+            menu.style.userSelect = 'none';
+            options.forEach(opt => {
+                if (opt === 'separator') {
+                    const sep = document.createElement('div');
+                    sep.style.height = '1px';
+                    sep.style.background = '#444';
+                    sep.style.margin = '4px 0';
+                    menu.appendChild(sep);
+                    return;
+                }
+                const item = document.createElement('div');
+                item.textContent = opt.label;
+                item.style.padding = '8px 18px';
+                item.style.cursor = 'pointer';
+                item.addEventListener('mouseenter', () => item.style.background = '#333');
+                item.addEventListener('mouseleave', () => item.style.background = 'none');
+                item.addEventListener('click', () => {
+                    opt.action();
+                    menu.remove();
+                });
+                menu.appendChild(item);
+            });
+            document.body.appendChild(menu);
+            // Remove menu on click elsewhere
+            setTimeout(() => {
+                document.addEventListener('mousedown', function handler(e) {
+                    if (!menu.contains(e.target)) {
+                        menu.remove();
+                        document.removeEventListener('mousedown', handler);
+                    }
+                });
+            }, 0);
+        }
+
+        // Toggle coming soon apps
+        function toggleComingSoon() {
+            const soon = document.querySelectorAll('.coming-soon');
+            // Read current state from localStorage
+            const show = localStorage.getItem('showComingSoon') === '1';
+            soon.forEach(el => el.style.display = show ? 'none' : 'list-item');
+            localStorage.setItem('showComingSoon', show ? '0' : '1');
+        }
+
+        // Reset to default
+        function resetToDefault() {
+            localStorage.removeItem('appsMenuOrder');
+            localStorage.removeItem('showComingSoon');
+            localStorage.removeItem('hiddenApps');
+            localStorage.removeItem('customApps');
+            location.reload();
+        }
+
+        // Hide app
+        function hideApp(appItem) {
+            appItem.style.display = 'none';
+            // Save hidden state to localStorage
+            const hidden = JSON.parse(localStorage.getItem('hiddenApps') || '{}');
+            if (appItem.dataset.appid) {
+            hidden[appItem.dataset.appid] = true;
+            localStorage.setItem('hiddenApps', JSON.stringify(hidden));
+            }
+        }
+
+        // Assign unique data-appid to all built-in apps on first load (if not already set)
+        (function assignAppIds() {
+            const lists = document.querySelectorAll('.apps-list');
+            lists.forEach((list, idx) => {
+            Array.from(list.children).forEach((item, i) => {
+                if (!item.dataset.appid) {
+                item.dataset.appid = `app${idx}_${i}`;
+                }
+            });
+            });
+        })();
+
+        // Restore coming soon visibility and hidden apps
+        (function restoreComingSoonAndHiddenApps() {
+            // Coming soon
+            if (localStorage.getItem('showComingSoon') === '1') {
+            document.querySelectorAll('.coming-soon').forEach(el => el.style.display = 'list-item');
+            } else {
+            document.querySelectorAll('.coming-soon').forEach(el => el.style.display = 'none');
+            }
+            // Hidden apps (works for both user and built-in apps)
+            const hidden = JSON.parse(localStorage.getItem('hiddenApps') || '{}');
+            document.querySelectorAll('.app-item').forEach(el => {
+            if (el.dataset.appid && hidden[el.dataset.appid]) {
+                el.style.display = 'none';
+            }
+            });
+        })();
+
+        // Context menu for app-wrapper (apps menu)
+        document.addEventListener('contextmenu', function(e) {
+            // Only on .app-wrapper, not on .app-item
+            const appItem = e.target.closest('.app-item');
+            if (appItem) return;
+            const wrapper = e.target.closest('.app-wrapper');
+            if (!wrapper) return;
+            e.preventDefault();
+            showContextMenu([
+                {
+                    label: (localStorage.getItem('showComingSoon') === '0' ? 'Show' : 'Hide') + ' coming soon apps',
+                    action: toggleComingSoon
+                },
+                {
+                    label: 'Reset to Default',
+                    action: resetToDefault
+                }
+            ], e.clientX, e.clientY);
+        });
+
+        // Context menu for app-item
+        document.addEventListener('contextmenu', function(e) {
+            const appItem = e.target.closest('.app-item');
+            if (!appItem) return;
+            e.preventDefault();
+            showContextMenu([
+                {
+                    label: 'Hide app',
+                    action: () => hideApp(appItem)
+                }
+            ], e.clientX, e.clientY);
+        });
+
+        function enableDragAndDropForList(list) {
+            // Make app-items draggable
+            Array.from(list.children).forEach(item => {
+            item.setAttribute('draggable', 'true');
+
+            item.addEventListener('dragstart', function(e) {
+                draggedItem = this;
+                setTimeout(() => this.style.opacity = '0.5', 0);
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', this.dataset.appid);
+            });
+
+            item.addEventListener('dragend', function(e) {
+                this.style.opacity = '';
+                draggedItem = null;
+            });
+
+            item.addEventListener('dragenter', function(e) {
+                e.preventDefault();
+                this.style.backgroundColor = 'rgba(255,255,255,0.2)';
+            });
+            item.addEventListener('dragleave', function(e) {
+                this.style.backgroundColor = '';
+            });
+            });
+
+            // Accept drops from any .app-item (from any folder)
+            list.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            });
+
+            list.addEventListener('drop', function(e) {
+                e.preventDefault();
+                const appid = e.dataTransfer.getData('text/plain');
+                const dragged = document.querySelector(`[data-appid="${appid}"]`);
+                if (!dragged) return;
+
+                // Find the closest .app-item under the cursor
+                let target = e.target;
+                while (target && !target.classList.contains('app-item')) {
+                    if (target === this) break;
+                    target = target.parentElement;
+                }
+                if (target && target.classList && target.classList.contains('app-item') && target !== dragged) {
+                    // Insert before or after depending on mouse Y position
+                    const rect = target.getBoundingClientRect();
+                    const offset = e.clientY - rect.top;
+                    if (offset < rect.height / 2) {
+                        this.insertBefore(dragged, target);
+                    } else {
+                        this.insertBefore(dragged, target.nextSibling);
+                    }
+                } else {
+                    this.appendChild(dragged);
+                }
+            // Assign unique data-appid to each app-item if not already set
+            const hidden = JSON.parse(localStorage.getItem('hiddenApps') || '{}');
+            document.querySelectorAll('.apps-list').forEach((list, idx) => {
+            Array.from(list.children).forEach((item, i) => {
+                if (!item.dataset.appid) {
+                item.dataset.appid = `app${idx}_${i}`;
+                }
+                // Hide if in hiddenApps
+                if (hidden[item.dataset.appid]) {
+                    item.style.display = 'none';
+                }
+            });
+            });
+            document.querySelectorAll('.apps-list').forEach((list, idx) => {
+            Array.from(list.children).forEach((item, i) => {
+                if (!item.dataset.appid) {
+                item.dataset.appid = `app${idx}_${i}`;
+                }
+            });
+            });
+
+            // Make app-items clickable
+            document.querySelectorAll('.app-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Prevent click if dragging
+                if (e.target.tagName === 'A') return;
+                const link = this.querySelector('a').href;
+                window.location.href = link;
+            });
+            });
+
+            // Drag and drop logic for all folders, including empty ones
+            document.querySelectorAll('.apps-list').forEach(list => {
+                // Allow dropping on empty lists and between items
+                list.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    // Highlight the item under the cursor
+                    let target = e.target.closest('.app-item');
+                    Array.from(list.children).forEach(item => item.style.backgroundColor = '');
+                    if (target && target !== draggedItem) {
+                        target.style.backgroundColor = 'rgba(255,255,255,0.2)';
+                    }
+                });
+                list.addEventListener('dragleave', function(e) {
+                    Array.from(list.children).forEach(item => item.style.backgroundColor = '');
+                });
+                list.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    Array.from(list.children).forEach(item => item.style.backgroundColor = '');
+                    const appid = e.dataTransfer.getData('text/plain');
+                    const dragged = document.querySelector(`[data-appid="${appid}"]`);
+                    if (!dragged) return;
+                    // Find the closest .app-item under the cursor
+                    let target = e.target.closest('.app-item');
+                    if (target && target !== dragged) {
+                        const rect = target.getBoundingClientRect();
+                        const offset = e.clientY - rect.top;
+                        if (offset < rect.height / 2) {
+                            list.insertBefore(dragged, target);
+                        } else {
+                            list.insertBefore(dragged, target.nextSibling);
+                        }
+                    } else {
+                        // If not over an item, append to end
+                        list.appendChild(dragged);
+                    }
+                    saveAllAppOrders();
+                });
+                enableDragAndDropForList(list);
+            });
+
+            // Allow dropping on .app-wrapper (not just .apps-list) to move to empty folders
+            document.querySelectorAll('.app-wrapper').forEach(wrapper => {
+            wrapper.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                // Set dropEffect to move for visual feedback
+                e.dataTransfer.dropEffect = 'move';
+            });
+            wrapper.addEventListener('drop', function(e) {
+                e.preventDefault();
+                const appid = e.dataTransfer.getData('text/plain');
+                const dragged = document.querySelector(`[data-appid="${appid}"]`);
+                if (!dragged) return;
+                const list = this.querySelector('.apps-list');
+                if (list) {
+                    // Find the closest .app-item under the cursor
+                    let target = e.target.closest('.app-item');
+                    if (target && target !== dragged) {
+                        const rect = target.getBoundingClientRect();
+                        const offset = e.clientY - rect.top;
+                        if (offset < rect.height / 2) {
+                            list.insertBefore(dragged, target);
+                        } else {
+                            list.insertBefore(dragged, target.nextSibling);
+                        }
+                    } else {
+                        list.appendChild(dragged);
+                    }
+                    saveAllAppOrders();
+                }
+            });
+            });
+
+            // Save the section and order of all app-items
+            window.saveAllAppOrders = function saveAllAppOrders() {
+            const lists = document.querySelectorAll('.apps-list');
+            let appState = {};
+            lists.forEach((list, idx) => {
+                Array.from(list.children).forEach((li, order) => {
+                appState[li.dataset.appid] = { section: idx, order: order };
+                });
+            });
+            localStorage.setItem('appsMenuOrder', JSON.stringify(appState));
+            };
+
+            // Load the section and order of all app-items
+            function loadAllAppOrders() {
+            const appState = JSON.parse(localStorage.getItem('appsMenuOrder'));
+            if (!appState) return;
+            const lists = document.querySelectorAll('.apps-list');
+            // Collect all items by id
+            let allItems = {};
+            lists.forEach(list => {
+                Array.from(list.children).forEach(li => {
+                allItems[li.dataset.appid] = li;
+                });
+            });
+            // Clear all lists
+            lists.forEach(list => list.innerHTML = '');
+            // Place items in correct section and order
+        Object.entries(appState)
+            .sort((a, b) => {
+                if (a[1].section !== b[1].section) return a[1].section - b[1].section;
+                return a[1].order - b[1].order;
+            })
+            .forEach(([appid, { section }]) => {
+                const li = allItems[appid];
+                if (li && lists[section]) {
+                    lists[section].appendChild(li);
+                }
+            });
+        }
+
+            // Initial load
+            loadAllAppOrders();
+        });
+    }
+    </script>
+</body>
+</html>
