@@ -372,7 +372,13 @@
                 </div>
                 <a href="#" class="app-link">Munetios Kids</a>
             </li>
-            
+            <!-- dO mUNETIOS PETS   -->
+            <li class="app-item coming-soon">
+                <div class="icon">
+                    <img src="image copy 46.png" alt="Munetios Pets Icon" width="52" height="65">
+                </div>
+                <a href="#" class="app-link">Munetios Pets</a>
+            </li>
 
              <!-- DO Munetios Shopping -->
             <li class="app-item coming-soon">
@@ -819,7 +825,9 @@
             loadCustomAppsFromStorage();
             // Wait for custom apps to be added, then restore order
             setTimeout(function() {
-            if (typeof loadAllAppOrders === 'function') loadAllAppOrders();
+                if (typeof loadAllAppOrders === 'function') loadAllAppOrders();
+                // Enable drag-and-drop for all lists after loading
+                document.querySelectorAll('.apps-list').forEach(enableDragAndDropForList);
             }, 0);
         });
 
@@ -1105,9 +1113,10 @@
                 }
             ], e.clientX, e.clientY);
         });
+        // Global variable for the dragged item
+        let draggedItem = null;
 
         function enableDragAndDropForList(list) {
-            // Make app-items draggable
             Array.from(list.children).forEach(item => {
             item.setAttribute('draggable', 'true');
 
@@ -1132,166 +1141,97 @@
             });
             });
 
-            // Accept drops from any .app-item (from any folder)
             list.addEventListener('dragover', function(e) {
             e.preventDefault();
+            let target = e.target.closest('.app-item');
+            Array.from(list.children).forEach(item => item.style.backgroundColor = '');
+            if (target && target !== draggedItem) {
+                target.style.backgroundColor = 'rgba(255,255,255,0.2)';
+            }
+            });
+
+            list.addEventListener('dragleave', function(e) {
+            Array.from(list.children).forEach(item => item.style.backgroundColor = '');
             });
 
             list.addEventListener('drop', function(e) {
-                e.preventDefault();
-                const appid = e.dataTransfer.getData('text/plain');
-                const dragged = document.querySelector(`[data-appid="${appid}"]`);
-                if (!dragged) return;
+            e.preventDefault();
+            Array.from(list.children).forEach(item => item.style.backgroundColor = '');
+            const appid = e.dataTransfer.getData('text/plain');
+            const dragged = document.querySelector(`[data-appid="${appid}"]`);
+            if (!dragged) return;
 
-                // Find the closest .app-item under the cursor
-                let target = e.target;
-                while (target && !target.classList.contains('app-item')) {
-                    if (target === this) break;
-                    target = target.parentElement;
-                }
-                if (target && target.classList && target.classList.contains('app-item') && target !== dragged) {
-                    // Insert before or after depending on mouse Y position
-                    const rect = target.getBoundingClientRect();
-                    const offset = e.clientY - rect.top;
-                    if (offset < rect.height / 2) {
-                        this.insertBefore(dragged, target);
-                    } else {
-                        this.insertBefore(dragged, target.nextSibling);
-                    }
+            // Use the event target from dragover for precise placement
+            let target = e.target.closest('.app-item');
+            if (target && target !== dragged) {
+                // Calculate mouse position relative to target
+                const rect = target.getBoundingClientRect();
+                const offset = e.clientY - rect.top;
+                if (offset < rect.height / 2) {
+                list.insertBefore(dragged, target);
                 } else {
-                    this.appendChild(dragged);
+                list.insertBefore(dragged, target.nextSibling);
                 }
-            // Assign unique data-appid to each app-item if not already set
-            const hidden = JSON.parse(localStorage.getItem('hiddenApps') || '{}');
-            document.querySelectorAll('.apps-list').forEach((list, idx) => {
-            Array.from(list.children).forEach((item, i) => {
-                if (!item.dataset.appid) {
-                item.dataset.appid = `app${idx}_${i}`;
-                }
-                // Hide if in hiddenApps
-                if (hidden[item.dataset.appid]) {
-                    item.style.display = 'none';
-                }
+            } else {
+                // If dropped on empty space, append to end
+                list.appendChild(dragged);
+            }
+            saveAllAppOrders();
             });
-            });
-            document.querySelectorAll('.apps-list').forEach((list, idx) => {
-            Array.from(list.children).forEach((item, i) => {
-                if (!item.dataset.appid) {
-                item.dataset.appid = `app${idx}_${i}`;
-                }
-            });
-            });
+        }
 
-            // Make app-items clickable
-            document.querySelectorAll('.app-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                // Prevent click if dragging
-                if (e.target.tagName === 'A') return;
-                const link = this.querySelector('a').href;
-                window.location.href = link;
-            });
-            });
-
-            // Drag and drop logic for all folders, including empty ones
-            document.querySelectorAll('.apps-list').forEach(list => {
-                // Allow dropping on empty lists and between items
-                list.addEventListener('dragover', function(e) {
-                    e.preventDefault();
-                    // Highlight the item under the cursor
-                    let target = e.target.closest('.app-item');
-                    Array.from(list.children).forEach(item => item.style.backgroundColor = '');
-                    if (target && target !== draggedItem) {
-                        target.style.backgroundColor = 'rgba(255,255,255,0.2)';
-                    }
-                });
-                list.addEventListener('dragleave', function(e) {
-                    Array.from(list.children).forEach(item => item.style.backgroundColor = '');
-                });
-                list.addEventListener('drop', function(e) {
-                    e.preventDefault();
-                    Array.from(list.children).forEach(item => item.style.backgroundColor = '');
-                    const appid = e.dataTransfer.getData('text/plain');
-                    const dragged = document.querySelector(`[data-appid="${appid}"]`);
-                    if (!dragged) return;
-                    // Find the closest .app-item under the cursor
-                    let target = e.target.closest('.app-item');
-                    if (target && target !== dragged) {
-                        const rect = target.getBoundingClientRect();
-                        const offset = e.clientY - rect.top;
-                        if (offset < rect.height / 2) {
-                            list.insertBefore(dragged, target);
-                        } else {
-                            list.insertBefore(dragged, target.nextSibling);
-                        }
-                    } else {
-                        // If not over an item, append to end
-                        list.appendChild(dragged);
-                    }
-                    saveAllAppOrders();
-                });
-                enableDragAndDropForList(list);
-            });
-
-            // Allow dropping on .app-wrapper (not just .apps-list) to move to empty folders
-            document.querySelectorAll('.app-wrapper').forEach(wrapper => {
+        // Allow dropping on .app-wrapper (not just .apps-list) to move to empty folders
+        document.querySelectorAll('.app-wrapper').forEach(wrapper => {
             wrapper.addEventListener('dragover', function(e) {
-                e.preventDefault();
-                // Set dropEffect to move for visual feedback
-                e.dataTransfer.dropEffect = 'move';
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
             });
             wrapper.addEventListener('drop', function(e) {
-                e.preventDefault();
-                const appid = e.dataTransfer.getData('text/plain');
-                const dragged = document.querySelector(`[data-appid="${appid}"]`);
-                if (!dragged) return;
-                const list = this.querySelector('.apps-list');
-                if (list) {
-                    // Find the closest .app-item under the cursor
-                    let target = e.target.closest('.app-item');
-                    if (target && target !== dragged) {
-                        const rect = target.getBoundingClientRect();
-                        const offset = e.clientY - rect.top;
-                        if (offset < rect.height / 2) {
-                            list.insertBefore(dragged, target);
-                        } else {
-                            list.insertBefore(dragged, target.nextSibling);
-                        }
-                    } else {
-                        list.appendChild(dragged);
-                    }
-                    saveAllAppOrders();
+            e.preventDefault();
+            const appid = e.dataTransfer.getData('text/plain');
+            const dragged = document.querySelector(`[data-appid="${appid}"]`);
+            if (!dragged) return;
+            const list = this.querySelector('.apps-list');
+            if (list) {
+                // If dropped on empty list, append
+                if (list.children.length === 0) {
+                list.appendChild(dragged);
+                saveAllAppOrders();
                 }
+            }
             });
-            });
+        });
 
-            // Save the section and order of all app-items
-            window.saveAllAppOrders = function saveAllAppOrders() {
+        // Save the section and order of all app-items
+
+        // Save the section and order of all app-items
+        window.saveAllAppOrders = function saveAllAppOrders() {
             const lists = document.querySelectorAll('.apps-list');
             let appState = {};
             lists.forEach((list, idx) => {
-                Array.from(list.children).forEach((li, order) => {
+            Array.from(list.children).forEach((li, order) => {
                 appState[li.dataset.appid] = { section: idx, order: order };
-                });
+            });
             });
             localStorage.setItem('appsMenuOrder', JSON.stringify(appState));
-            };
+        };
 
-            // Load the section and order of all app-items
-            function loadAllAppOrders() {
+        // Load the section and order of all app-items
+        function loadAllAppOrders() {
             const appState = JSON.parse(localStorage.getItem('appsMenuOrder'));
             if (!appState) return;
             const lists = document.querySelectorAll('.apps-list');
             // Collect all items by id
             let allItems = {};
             lists.forEach(list => {
-                Array.from(list.children).forEach(li => {
+            Array.from(list.children).forEach(li => {
                 allItems[li.dataset.appid] = li;
-                });
+            });
             });
             // Clear all lists
             lists.forEach(list => list.innerHTML = '');
             // Place items in correct section and order
-        Object.entries(appState)
+            Object.entries(appState)
             .sort((a, b) => {
                 if (a[1].section !== b[1].section) return a[1].section - b[1].section;
                 return a[1].order - b[1].order;
@@ -1299,15 +1239,13 @@
             .forEach(([appid, { section }]) => {
                 const li = allItems[appid];
                 if (li && lists[section]) {
-                    lists[section].appendChild(li);
+                lists[section].appendChild(li);
                 }
             });
         }
 
-            // Initial load
-            loadAllAppOrders();
-        });
-    }
+        // Initial load
+        loadAllAppOrders();
     </script>
 </body>
 </html>
