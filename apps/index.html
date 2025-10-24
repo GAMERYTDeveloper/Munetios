@@ -1219,8 +1219,14 @@
         // Load the section and order of all app-items
         function loadAllAppOrders() {
             const appState = JSON.parse(localStorage.getItem('appsMenuOrder'));
-            if (!appState) return;
             const lists = document.querySelectorAll('.apps-list');
+            // If the top section (first .apps-list) is emptied, remove order and reload immediately
+            if (lists.length && lists[0].children.length === 0) {
+                localStorage.removeItem('appsMenuOrder');
+                location.reload();
+                return;
+            }
+            if (!appState) return;
             // Collect all items by id
             let allItems = {};
             lists.forEach(list => {
@@ -1243,8 +1249,7 @@
                 }
             });
         }
-
-        // Initial load
+        // Call loadAllAppOrders after DOM is ready
         loadAllAppOrders();
     </script>
 </body>
